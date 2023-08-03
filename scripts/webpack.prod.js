@@ -5,7 +5,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const rootPath = path.resolve(__dirname, './../');
 const outputPath = path.resolve(rootPath, './assets');
-const BuildPlugin = require('./buildplugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackBar = require('webpackbar')
 
@@ -25,10 +24,6 @@ module.exports = merge(common, {
       protectWebpackAssets: false,
       cleanAfterEveryBuildPatterns: ['**/*.LICENSE.txt', 'report.html'],
       cleanOnceBeforeBuildPatterns: ['**/*', '!favicon.ico*', '!css/**'],
-    }),
-    new BuildPlugin({
-      rootPath,
-      outputPath
     }),
     new WebpackBar(),
     new HtmlWebpackPlugin({
