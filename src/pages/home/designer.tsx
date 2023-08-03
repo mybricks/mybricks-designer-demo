@@ -4,23 +4,11 @@ import config from './app-config'
 
 import css from './app.less'
 
-const designer = 'https://f2.beckwai.com/kos/nlav12333/mybricks/designer-spa/1.2.87/index.min.js';
+const SPADesigner = (window as any).mybricks.SPADesigner
 
 export default function MyDesigner() {
   const designerRef = useRef<{ dump; toJSON; geoView; switchActivity; getPluginData }>()
   const [beforeunload, setBeforeunload] = useState(false)
-  const [SPADesigner, setSPADesigner] = useState(null);
-
-  useMemo(() => {
-    if (designer) {
-      const script = document.createElement('script');
-      script.src = designer;
-      document.head.appendChild(script);
-      script.onload = () => {
-        (window as any).mybricks.SPADesigner && setSPADesigner((window as any).mybricks.SPADesigner);
-      };
-    }
-  }, [designer])
 
   useEffect(() => {
     if (beforeunload) {
