@@ -20,11 +20,6 @@ module.exports = merge(common, {
     new BundleAnalyzerPlugin({
       analyzerMode: "static",
     }),
-    new CleanWebpackPlugin({
-      protectWebpackAssets: false,
-      cleanAfterEveryBuildPatterns: ['**/*.LICENSE.txt', 'report.html'],
-      cleanOnceBeforeBuildPatterns: ['**/*', '!favicon.ico*', '!css/**'],
-    }),
     new WebpackBar(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
